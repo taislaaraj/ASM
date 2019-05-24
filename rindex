@@ -1,0 +1,16 @@
+rindex:
+        push rbp
+	      mov rbp, rsp
+
+	      push rdi
+	      mov rax, 0
+whilee:
+	      cmp byte [rdi], sil
+        cmove rax, rdi
+	      cmp byte [rdi], 0
+	      jz ende
+	      inc rdi
+	      jmp whilee
+ende:
+	      leave
+	      ret
