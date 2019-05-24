@@ -1,0 +1,20 @@
+strcmp:
+        push rbp
+        mov rbp, rsp
+
+        mov rax, 0
+        mov rcx, 0
+whilec:
+        movzx rax, byte [rdi+rcx]
+        movzx rdx, byte [rsi+rcx]
+        inc rcx
+        cmp al, 0
+        je endc
+        cmp dl, 0
+        je endc
+        cmp al, dl
+        je whilec
+endc:
+        sub rax, rdx
+        leave
+        ret
