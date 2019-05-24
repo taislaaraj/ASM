@@ -1,0 +1,25 @@
+strcspn:
+        push rbp
+	      mov rbp, rsp
+
+	      xor rcx, rcx
+whileg:
+	      xor rax, rax
+	      add rcx, 1
+        jz btw
+btw:
+        cmp byte [rdi + rcx], 0
+	      jz endg
+	      mov r9b, [rdi + rcx - 1]
+        cmp byte [rsi + rax], r9b
+	      jz endg
+testg:
+	      cmp byte [rsi + rax], 0
+        jz whileg
+	      add rax, 1
+	      jmp testg
+endg:
+        mov rax, rcx
+	      dec rax
+	      leave
+        ret
