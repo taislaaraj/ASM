@@ -1,0 +1,19 @@
+memset:
+	      push rbp
+	      mov rbp, rsp
+
+	      mov rbx, rdi
+       	mov r9, rsi
+	      mov r10, rdx
+        push rdi
+	      jmp end
+whilea:
+	      mov [rbx], r9b
+	      add rbx, 1
+	      sub r10, 1
+end:
+	      cmp r10, 0
+	      jnle whilea
+
+	      leave
+	      ret
