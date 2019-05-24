@@ -1,0 +1,15 @@
+strlen:
+        push rbp
+        mov rbp, rsp
+
+        mov rax, 0
+
+while: 
+        cmp byte [rdi+rax], 0
+        je end_my_my_strlen
+        add rax, 1
+        jmp while
+
+end_my_my_strlen:
+        leave
+        ret
