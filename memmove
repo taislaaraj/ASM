@@ -1,0 +1,20 @@
+memmove:
+        push rbp
+        mov rbp, rsp
+
+        mov r8, rdi
+        mov r9, rsi
+        mov r10, rdx
+        push rdi
+whileb:
+        cmp r10, 0
+        jle enda
+        mov bl, [r9]
+        mov [r8], bl
+        add r8, 1
+        add r9, 1
+        sub r10, 1
+        jmp whileb
+enda:
+        leave
+        ret
