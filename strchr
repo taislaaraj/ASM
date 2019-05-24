@@ -1,0 +1,22 @@
+strchr:
+        push rbp
+        mov rbp, rsp
+    
+        mov rax, 0
+whilez:
+        cmp byte [rdi], sil
+        je the_end
+	      cmp byte [rdi], 0
+	      je not_found
+	      add rdi, 1
+	      jmp whilez
+
+not_found:
+	      mov rax, 0
+        leave
+	      ret
+
+the_end:
+        mov rax, rdi
+	      leave
+	      ret
