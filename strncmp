@@ -1,0 +1,23 @@
+strncmp:
+        push rbp
+        mov rbp, rsp
+
+        mov rax, 0
+        mov rcx, 0
+whiled:
+        movzx rax, byte [rdi+rcx]
+        movzx rdx, byte [rsi+rcx]
+        dec r8
+        inc rcx
+        cmp al, 0
+        je endd
+        cmp bl, 0
+        je endd
+        cmp dl, 0
+        je endd
+        cmp al, bl
+        je whiled
+endd:
+        sub rax, rdx
+        leave
+        ret
