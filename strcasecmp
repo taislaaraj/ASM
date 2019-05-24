@@ -1,0 +1,45 @@
+strcasecmp:
+	       push rbp
+	       mov rbp, rsp
+
+	       jmp beg
+sec1:
+	       add r9b, 32
+	       jmp beg2
+
+sec2:
+	       add spl, 32
+	       jmp cmpo
+
+beg:
+	       mov r9b, [rdi]
+	       cmp r9b, 65
+	       jnge beg2
+	       cmp r9b, 90
+	       jnge sec1
+
+beg2:
+	       mov spl, [rsi]
+	       cmp spl, 65
+	       jnge cmpo
+	       cmp spl, 90
+	       jnge sec2
+
+cmpo:
+	       cmp r9b, spl
+	       jne endi
+	       cmp r9b, 0
+	       jz endi
+	       add rsi, 1
+	       add rdi, 1
+	       jmp beg
+
+endi:
+	       cmp r9b, 0
+	       cmp spl, 0
+	       sub r9b, spl
+	       movsx rax, r9b
+
+	       mov rsp, rbp
+	       pop rbp
+	       ret
